@@ -75,11 +75,19 @@ var Menu = React.createClass({
 
 
 
+
+
+
+
+
+
 var Till = React.createClass({
 	getInitialState: function() {
 		return {
 			orderItems: [],
-			orderPrices: 0
+			orderTotal: 0,
+			customerPayment: '',
+			changeDueToCustomer: 0
 		}
 	},
 	eachMenuItem: function(menuItem, i) {
@@ -90,12 +98,31 @@ var Till = React.createClass({
 			</option>
 		)
 	},
+	nextId: function() {
+		this.uniqueId = this.uniqueId || 0;
+		return this.uniqueId++;
+	},
+	takeCustomerPayment: function(element) {
+		if (!((this.state.customerPayment.indexOf('.') !== -1) && (this.state.customerPayment.length - 1) - this.state.customerPayment.indexOf('.') >= 2)) {
+			this.setState({customerPayment: this.state.customerPayment + element.target.value});
+		}
+	},
+	deleteLastDigit: function() {
+		newCustPayment = this.state.customerPayment.substr(0, this.state.customerPayment.length - 1)
+		this.setState({customerPayment: newCustPayment});
+	},
+	calcChangeDueToCustomer: function() {
+		if (this.state.customerPayment - this.state.orderTotal >= 0) {
+			this.setState({changeDueToCustomer: this.state.customerPayment - this.state.orderTotal});
+		};
+	},
 	addToOrder: function() {
+		var allItemsOnOrder = this.state.orderItems;
 		var itemToAdd = ReactDOM.findDOMNode(this.refs.selectedMenuItem).value;
-		this.state.orderItems.push(itemToAdd);
-		this.state.orderPrices = this.state.orderPrices + this.props.cafeMenu[itemToAdd];
-		console.log(this.state.orderItems)
-		console.log(this.state.orderPrices)
+		var itemArray = {item: itemToAdd, id: this.nextId()};
+		allItemsOnOrder.push(itemArray);
+		this.setState({orderItems: allItemsOnOrder});
+		this.setState({orderTotal: this.state.orderTotal + this.props.cafeMenu[itemToAdd]});
 	},
 	render: function() {
 
