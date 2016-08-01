@@ -10,11 +10,11 @@ var Cafe = React.createClass({
 	getDefaultProps: function() {
 		return {
 			menu: {
-				Bagel: 10,
-				Muffin: 10,
-				Tea: 5,
-				Coffee: 6,
-				Sandwich: 15
+				Bagel: 3.50,
+				Muffin: 2.90,
+				Tea: 1.80,
+				Coffee: 3.20,
+				Sandwich: 3.50
 			}
 		}
 	},
