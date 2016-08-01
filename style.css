@@ -1,0 +1,108 @@
+.cafe-container {
+	margin-top: 150px;
+	float: left;
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+.no-list-style {
+	list-style: none;
+}
+
+
+
+
+
+
+
+
+
+
+.menu-container {
+	font-family: 'Pacifico', cursive;
+	float: left;
+	width: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+.till-container {
+	font-family: 'Special Elite', cursive;
+	float: left;
+	width: 70%;
+}
+
+.calculator {
+	padding: 35px 0;
+	color: white;
+	float: left;
+	width: 60%;
+	background-image: url('http://owac.org/images/uniterevolution/home/images/wood.jpg');
+	text-align: center;
+	border-radius: 20px;
+}
+
+.calculator .allCalcBtns {
+	margin: 5px;
+	font-family: 'Special Elite', cursive;
+	color: white;
+	background-image: url('http://www.luckyclan.com/artstudio/tutorials/engraved_shadow/texture_metal.png');
+}
+
+.calculator .numberBtns {
+	border-radius: 100%;
+	font-size: 20px;
+	height: 50px;
+	width: 50px;
+	text-shadow: 2px 2px grey;
+}
+
+.calculator .otherBtns {
+	border-radius: 10px;
+	height: 30px;
+}
+
+
+
+
+
+
+
+
+.receipt-container {
+	padding: 35px 15px;
+	width: 30%;
+	float: right;
+	background-image: url('http://www.tiptheme.com/wp-content/uploads/2015/07/paper-background-5.jpg');
+}
+
+.receipt-container .receipt-items-ordered {
+	min-height: 200px;
+}
+
+.receipt-item {
+	float: left;
+	width: 60%;
+}
+
+.receipt-item-price {
+	float: right;
+	width: 40%;
+}
+
+
