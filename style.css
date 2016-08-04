@@ -1,3 +1,9 @@
+.hidden {
+	display: none;
+}
+
+
+
 .cafe-container {
 	margin-top: 150px;
 	float: left;
@@ -47,7 +53,7 @@
 	width: 70%;
 }
 
-.calculator {
+.till-container .calculator {
 	padding: 35px 0;
 	color: white;
 	float: left;
@@ -57,14 +63,14 @@
 	border-radius: 20px;
 }
 
-.calculator .allCalcBtns {
+.till-container .calculator .allCalcBtns {
 	margin: 5px;
 	font-family: 'Special Elite', cursive;
 	color: white;
 	background-image: url('http://www.luckyclan.com/artstudio/tutorials/engraved_shadow/texture_metal.png');
 }
 
-.calculator .numberBtns {
+.till-container .calculator .numberBtns {
 	border-radius: 100%;
 	font-size: 20px;
 	height: 50px;
@@ -72,11 +78,32 @@
 	text-shadow: 2px 2px grey;
 }
 
-.calculator .otherBtns {
+.till-container .calculator .otherBtns {
 	border-radius: 10px;
 	height: 30px;
 }
 
+.till-container .inline-blocks {
+	display: inline;
+}
+
+.till-container .till-top-row {
+	height: 60px;
+	margin-bottom: 20px;
+}
+
+.till-container .item-quantity {
+	background-color: #0a0a0a;
+	color: grey;
+	text-align: right;
+	font-size: 30px;
+	overflow: hidden;
+	display: inline-block;
+	width: 80%;
+	height: 20px;
+	padding: 5px;
+	margin: 0px 10px;
+}
 
 
 
@@ -95,12 +122,17 @@
 	min-height: 200px;
 }
 
-.receipt-item {
+.receipt-container .receipt-item {
 	float: left;
-	width: 60%;
+	width: 40%;
 }
 
-.receipt-item-price {
+.receipt-container .receipt-item-quantity {
+	float: left;
+	width: 20%;
+}
+
+.receipt-container .receipt-item-price {
 	float: right;
 	width: 40%;
 }
