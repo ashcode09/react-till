@@ -209,10 +209,8 @@ var Till = React.createClass({
 
 						<div>
 						{numericalBtnValues.map(function(val, index) {
-							console.log(val)
-
 							return ( (index+1)%3 == 0 ? <div className="inline-blocks"><input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value={val} key={index} /><div></div></div> : <input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value={val} key={index} />   )
-						})}
+						}.bind(this))}
 						</div>
 
 
