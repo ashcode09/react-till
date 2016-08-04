@@ -121,8 +121,10 @@ var Till = React.createClass({
 
 
 	takePayment: function() {
-		this.state.itemQuantity = '';
-		this.state.takingPayment = true;
+		this.setState({
+			itemQuantity: '',
+			takingPayment: true
+		});
 	},
 
 
@@ -168,7 +170,6 @@ var Till = React.createClass({
 
 	render: function() {
 
-
 		console.log('Till props:')
 		console.log(this.props)
 		console.log('Till state:')
@@ -176,6 +177,8 @@ var Till = React.createClass({
 
 
 		var menu = this.props.cafeMenu;
+		var numericalBtnValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+
 		return (
 			<div
 				className="till-container">
@@ -183,38 +186,37 @@ var Till = React.createClass({
 					<div className="item-quantity otherBtns">
 						{this.state.itemQuantity} {this.state.customerPayment}
 					</div>
-					<div className={this.state.takingPayment ? 'hidden till-top-row' : 'till-top-row'}>
-						<p>Choose an item to add to order:</p>
-						<select
-							ref="selectedMenuItem">
-							{Object.keys(menu).map(this.eachMenuItem)}
-						</select>
-						<button
-							className="allCalcBtns otherBtns"
-							onClick={this.addToOrder}>
-							Add to Order
-						</button>
+					<div className={this.state.takingPayment ? 'hidden' : null}>
+						<p>To add an item to order, choose an item and type a quantity and click "Add to order".</p>
+						<p>When the customer has finished ordering, click the "Order finished" button to take payment.</p>
+						<div className="till-top-row">
+							<select
+								ref="selectedMenuItem">
+								{Object.keys(menu).map(this.eachMenuItem)}
+							</select>
+							<button
+								className="allCalcBtns otherBtns"
+								onClick={this.addToOrder}>
+								Add to Order
+							</button>
+						</div>
+					</div>
+					<div className={this.state.takingPayment ? null : 'hidden'}>
+						<p>Type the amount the customer has paid:</p>
 					</div>
 					<div>
+
+
 						<div>
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="1" />
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="2" />
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="3" />
+						{numericalBtnValues.map(function(val, index) {
+							console.log(val)
+
+							return ( (index+1)%3 == 0 ? <div className="inline-blocks"><input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value={val} key={index} /><div></div></div> : <input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value={val} key={index} />   )
+						})}
 						</div>
-						<div>
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="4" />
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="5" />
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="6" />
-						</div>
-						<div>
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="7" />
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="8" />
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="9" />
-						</div>
-						<div>
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="0" />
-							<input className="allCalcBtns numberBtns" type="button" onClick={this.enterValue} value="." />
-						</div>
+
+
+
 						<input className={this.state.takingPayment ? 'hidden allCalcBtns otherBtns' : 'allCalcBtns otherBtns' } type="button" onClick={this.takePayment} value="Order finished" />
 						<input className="allCalcBtns otherBtns" type="button" onClick={this.deleteLastDigit} value="Delete" />
 						<input className={this.state.takingPayment ? 'allCalcBtns otherBtns' : 'hidden allCalcBtns otherBtns' } type="button" onClick={this.calcChangeDueToCustomer} value="Calculate change due" />
